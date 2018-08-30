@@ -9,6 +9,7 @@ class App extends Component {
     super(props);
     this.state = {
       response: [],
+      productReviews:[],
       productsIndex: null,
       username: '',
       password: '', 
@@ -16,13 +17,17 @@ class App extends Component {
     }
     this.handleLoad = this.handleLoad.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.hendleLoadReview = this.hendleLoadReview.bind(this);
   }
   handleLoad(someData) {    
     this.setState({response: someData});
   }
   handleClick(index) {
-    console.log('loaded: ', index);
     this.setState({ productsIndex: index});
+  }
+  hendleLoadReview(reviews) {
+    console.log('loaded: ', reviews);
+    this.setState({ productReviews: reviews });
   }
   render() {
     
@@ -36,7 +41,8 @@ class App extends Component {
       if(this.state.productsIndex) {
         return (
           <div>
-            <Products index={ this.state.productsIndex } listOtProducts = { this.state.response } />
+            <Products index={ this.state.productsIndex } listOtProducts = { this.state.response } reviews = { this.state.productReviews } hendleLoadReview = {  
+              this.hendleLoadReview } productReviews = { this.state.productReviews } />
           </div>
         )
       }
