@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+//import './App.css';
 
 class RenderItems extends Component{ 
   
@@ -29,6 +29,7 @@ class RenderItems extends Component{
                 { this.props.productReviews.map((item, index) => {
                   return  <div key={ item.id }>
                             <p>{item.rate}</p>
+                            <p>{item.created_by.username}</p>
                             <p>{ item.text }</p>
                           </div>
                 }) }

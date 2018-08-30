@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+//import './App.css';
 
 class ListOfProducts extends Component {   
     
@@ -13,7 +13,6 @@ class ListOfProducts extends Component {
             return Promise.reject(result.status);
           }
         }).then(result => {
-          console.log('res: ', result);
           this.props.handleLoad(result);
           
         })
@@ -25,8 +24,7 @@ class ListOfProducts extends Component {
             return <p>Loading data</p>
         }
         else {
-            var arrayOfData = this.props.listOtProducts.map((item, index) => {  
-              console.log(item.id);          
+            var arrayOfData = this.props.listOtProducts.map((item, index) => {           
               return (
                 <div key={index} >
                   <p onClick = { () => { this.props.handleClick(item.id) } }>{item.id}</p>
