@@ -1,10 +1,11 @@
 /** To display buttons for registering */
 import React from 'react';
+//import './RegisterComponent.css'
 function RegisterComponent(props) {
     if (!props.token) {
         return (
 
-            <div >
+            <div className = "navbar">
                 <p onClick = { props.handleClickRegister }>Register</p>
                 <p>or</p>
                 <p onClick= { props.handleClickLogin }>Login</p>
@@ -13,7 +14,7 @@ function RegisterComponent(props) {
     }
     else {
         return (
-            <div>
+            <div className="navbar">
                 <p onClick={ props.logOut }>Logout</p>
             </div>
         )

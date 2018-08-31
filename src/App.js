@@ -16,8 +16,8 @@ class App extends Component {
       productsIndex: null,
       showForm: false,
       showLoginForm: false,
-      username: 'Olga',
-      password: '',
+      username: 'user10',
+      password: 'user',
       registered: false,
       token: null,
       message: '',
@@ -56,7 +56,7 @@ class App extends Component {
     this.setState({ showLoginForm: true });
   }
   changeInput(event) {
-    if(event.target.type == 'radio') {
+    if(event.target.type === 'radio') {
       this.setState({ [event.target.name]: event.target.value }, ()=> {
         console.log('rate: ', this.state.rate);
       });
@@ -146,15 +146,18 @@ class App extends Component {
       headerObj.append('Authorization', token);
       console.log('token: ', this.state.token);
 
-      const bodyObj = {
+      /**const bodyObj = {
         text: event.target.text.value,
         rate: event.target.rate.value
-      };
-      console.log(JSON.stringify(bodyObj));
+      };**/
+      var form = new FormData(event.target);
+      //form.append("text", "some text 2");
+      //form.append("rate", "4");
+      
       const initObj = {
         method: 'POST',
         headers: headerObj,
-        body: JSON.stringify(bodyObj),
+        body: form,
         credentials: 'same-origin'
       };
 

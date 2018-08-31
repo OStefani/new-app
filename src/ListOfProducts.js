@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-//import './App.css';
+//import './ListOfProducts.css';
 
 class ListOfProducts extends Component {   
     
@@ -26,8 +26,8 @@ class ListOfProducts extends Component {
         else {
             var arrayOfData = this.props.listOtProducts.map((item, index) => {           
               return (
-                <div key={index} >
-                  <p onClick = { () => { this.props.handleClick(item.id) } }>{item.id}</p>
+                <div key={index} className="listOfProducts" >
+                  <p onClick = { () => { this.props.handleClick(item.id) } } >{item.title}</p>
                 </div>
               )            
             });

@@ -23,17 +23,18 @@ class RenderItems extends Component{
             var source = 'http://smktesting.herokuapp.com/static/' + product.img;
             return (
               <div >
-                <p>{product.id}</p>
+                <div className="product">
                 <h3 >{product.title}</h3>
                 <img src={source} alt='item in stock' />
                 <p>{product.text}</p>
                 { this.props.productReviews.map((item, index) => {
-                  return  <div key={ item.id }>
+                  return  <div key={ item.id } className="reviews">
                             <p>{item.rate}</p>
                             <p>{item.created_by.username}</p>
                             <p>{ item.text }</p>
                           </div>
                 }) }
+                </div>
                 {
                   this.props.token &&
                   <div>

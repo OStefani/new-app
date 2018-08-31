@@ -1,28 +1,94 @@
 .App {
   text-align: center;
 }
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+/** Navbar **/
+.navbar {
+  margin-bottom: 50px;
+  background: wheat;
+  font-size: 16px;
+  text-align: center;
 }
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+.navbar p {
+  display: inline-block;
+  margin: 20px;
+}
+.navbar p:nth-child(1) {
+  background: gray;
+  padding: 10px 20px;
+  color: white;    
+}
+.navbar p:nth-child(3) {
+  background: gray;
+  padding: 10px 20px;
   color: white;
 }
 
-.App-title {
-  font-size: 1.5em;
+/** List of products **/
+.listOfProducts {
+  font-size: 25px;
+  
 }
-
-.App-intro {
-  font-size: large;
+.listOfProducts p {
+  margin: 2px;
+  display: inline-block;
+  padding: 20px;
+  background-color: lightblue;
+  color: white;
 }
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+/** Form **/
+form {
+  position: relative;
+  width: 500px;
+  margin-left: 50%;
+  left: -250px;
+  padding: 100px 50px;
+  background-color: rgb(197, 223, 231);
+}
+.form {
+  margin-top: 100px; 
+  text-align: center; 
+}
+form button {
+  background-color: gray;
+  color: white;
+  padding: 17px 5px;
+  width: 100px;
+}
+form input {
+  padding: 15px 5px;
+  font-size: 16px;
+}
+.linkToCat {
+  position: relative;
+  width: 500px;
+  margin-left: 50%;
+  left: -250px;
+  padding: 20px 50px;
+}
+.linkToCat:hover {
+  cursor: pointer;
+  color: gray;
+}
+.message {
+  position: relative;
+  color: gray;
+  background: wheat;
+  width: 500px;
+  margin-left: 50%;
+  left: -250px;
+  padding: 20px 50px;
+}
+.product {
+  position: relative;
+  width: 400px;
+  margin-left: 50%;
+  left: -250px;
+  padding: 20px 50px;
+  text-align: center;
+}
+.reviews {
+  padding: 20px 0;
+}
+.product .reviews:nth-child(even) {
+  background: rgb(238, 236, 236);
 }
