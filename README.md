@@ -1,6 +1,8 @@
-The app is displaying a list of products from a service http://smktesting.herokuapp.com/. It allows to explore products, their descriptions and comments. The app also allow to register and login for a users to leave their comments
+The app is displaying a list of products from a service http://smktesting.herokuapp.com/. It allows to explore products, their descriptions and comments. The app also allows users  to register and login to leave their comments.
 
-After downloading the folder run go to the folder in the terminal and run 
+It is deployed on [https://ostefani.github.io/new-app/](https://ostefani.github.io/new-app/)
+
+After downloading the folder go to the folder in the terminal and run 
 ### `npm install`
 
 To run the app in the development mode
