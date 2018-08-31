@@ -16,6 +16,7 @@ class RenderItems extends Component{
       })
       .catch(err => console.log(err)); 
   }
+
       render() {
           var index = this.props.index - 1;
           var product = this.props.listOtProducts[index];
@@ -33,6 +34,21 @@ class RenderItems extends Component{
                             <p>{ item.text }</p>
                           </div>
                 }) }
+                {
+                  this.props.token &&
+                  <div>
+                    <form onSubmit = { this.props.postComment }>
+                      <input name="rate" type="radio" id="one" value={ '1' } checked = { this.props.rate ==='1' } onChange = { this.props.changeInput } /><label htmlFor="one">1</label>
+                      <input name="rate" type="radio" id="two" value={ '2' } checked = { this.props.rate ==='2' } onChange = { this.props.changeInput } /><label htmlFor="two">2</label>
+                      <input name="rate" type="radio" id="three" value={ '3' } checked = { this.props.rate ==='3' } onChange = { this.props.changeInput } /><label htmlFor="three">3</label>
+                      <input name="rate" type="radio" id="four" value={ '4' } checked = { this.props.rate ==='4' } onChange = { this.props.changeInput } /><label htmlFor="four">4</label>
+                      <input name="rate" type="radio" id="five" value={ '5' } checked = { this.props.rate ==='5' } onChange = { this.props.changeInput } /><label htmlFor="five">5</label>
+                      <textarea name="text" id="" cols="30" rows="10" onChange = { this.props.changeInput } value={this.props.text}></textarea>
+                      <button>Submit</button>
+                    </form>
+                    
+                  </div>
+                }
             </div>          
             )            
       }     

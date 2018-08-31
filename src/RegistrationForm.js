@@ -11,7 +11,7 @@ function RegistrationForm(props) {
         <p>
             {props.message}
         </p>
-        <p >To the Catalog</p>
+        <p onClick = { props.toCatalog }>To the Catalog</p>
         </div>
     )
 }
