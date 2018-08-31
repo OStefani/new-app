@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 class ListOfProducts extends Component {   
     
     componentDidMount() {
-        fetch('http://smktesting.herokuapp.com/api/products/')
+        fetch('https://smktesting.herokuapp.com/api/products/')
         .then(result => {
           if(result.ok) {
             return result.json();

@@ -5,7 +5,7 @@ class RenderItems extends Component{
   
   componentWillMount() {
     var indexReview = this.props.index;
-    var url = 'http://smktesting.herokuapp.com/api/reviews/'+ indexReview; 
+    var url = 'https://smktesting.herokuapp.com/api/reviews/'+ indexReview; 
     fetch(url)
       .then(response => {
         if(response.ok) return response.json();
@@ -20,7 +20,7 @@ class RenderItems extends Component{
       render() {
           var index = this.props.index - 1;
           var product = this.props.listOtProducts[index];
-            var source = 'http://smktesting.herokuapp.com/static/' + product.img;
+            var source = 'https://smktesting.herokuapp.com/static/' + product.img;
             return (
               <div >
                 <div className="product">

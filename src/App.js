@@ -81,7 +81,7 @@ class App extends Component {
       headers: headerObjLog,
       body: JSON.stringify(bodyObj), 
     }
-    fetch('http://smktesting.herokuapp.com/api/register/', initObj)
+    fetch('https://smktesting.herokuapp.com/api/register/', initObj)
       .then(response => {
         if (response.ok) return response.json();
         else return Promise.reject(response.status);
@@ -115,7 +115,7 @@ class App extends Component {
       headers: headerObjLog,
       body: JSON.stringify(bodyObj)
     }
-    fetch('http://smktesting.herokuapp.com/api/login/', initObj)
+    fetch('https://smktesting.herokuapp.com/api/login/', initObj)
       .then(response => {
         if (response.ok) return response.json();
         else return Promise.reject(response.status);
@@ -161,7 +161,7 @@ class App extends Component {
         credentials: 'same-origin'
       };
 
-      const url = 'http://smktesting.herokuapp.com/api/reviews/' + (this.state.productsIndex);
+      const url = 'https://smktesting.herokuapp.com/api/reviews/' + (this.state.productsIndex);
       fetch(url, initObj)
         .then(response => {
           if (response.ok) return response.json();
