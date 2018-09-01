@@ -31,39 +31,63 @@
 .listOfProducts p {
   margin: 2px;
   display: inline-block;
-  padding: 20px;
+  padding: 2vw;
   background-color: lightblue;
   color: white;
+  width: 15vw;
 }
 /** Form **/
-form {
+.registerForm {
   position: relative;
-  width: 500px;
+  width: 40vw;
   margin-left: 50%;
-  left: -250px;
-  padding: 100px 50px;
+  left: -23vw;
+  padding: 100px 5vw;
   background-color: rgb(197, 223, 231);
 }
 .form {
   margin-top: 100px; 
   text-align: center; 
 }
-form button {
+.registerForm button {
   background-color: gray;
   color: white;
   padding: 17px 5px;
   width: 100px;
 }
-form input {
+.registerForm input {
   padding: 15px 5px;
   font-size: 16px;
 }
+
+/** Feedback form **/
+.feedback {
+  
+}
+.radio {
+  margin-bottom: 3vh;
+}
+.feedback textarea {
+  resize: none;
+  width: 30vw;
+}
+.feedback button {
+  width: 200px;
+  background-color: gray;
+  color: white;
+  padding: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+hr {
+  margin-bottom: 20px;
+}
 .linkToCat {
   position: relative;
-  width: 500px;
+  width: 40vw;
   margin-left: 50%;
-  left: -250px;
-  padding: 20px 50px;
+  left: -23vw;
+  padding: 20px 5vw;
 }
 .linkToCat:hover {
   cursor: pointer;
@@ -73,20 +97,21 @@ form input {
   position: relative;
   color: gray;
   background: wheat;
-  width: 500px;
+  width: 40vw;
   margin-left: 50%;
-  left: -250px;
-  padding: 20px 50px;
+  left: -23vw;
+  padding: 20px 5vw;
 }
 .product {
   position: relative;
-  width: 400px;
+  width: 40vw;
   margin-left: 50%;
-  left: -250px;
-  padding: 20px 50px;
+  left: -24vw;
+  padding: 20px 5vw;
   text-align: center;
 }
 .reviews {
+  
   padding: 20px 0;
 }
 .product .reviews:nth-child(even) {

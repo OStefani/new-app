@@ -6,7 +6,7 @@ import ListOfProducts from './ListOfProducts';
 import RegisterComponent from './RegisterComponent';
 import RegistrationForm from './RegistrationForm.js';
 import LoginForm from './LoginForm.js'
-
+/** Application state */
 class App extends Component {
   constructor(props) {
     super(props);
@@ -18,7 +18,6 @@ class App extends Component {
       showLoginForm: false,
       username: 'user10',
       password: 'user',
-      registered: false,
       token: null,
       message: '',
       text: 'A comment',
@@ -73,8 +72,8 @@ class App extends Component {
     headerObjLog.append('Content-Type', 'application/json');
     
     var bodyObj = {
-      username: event.target.username.value,
-      password: event.target.password.value
+      username: this.state.username,
+      password: this.state.password
     }
     var initObj = {
       method: 'POST',
@@ -105,8 +104,6 @@ class App extends Component {
     headerObjLog.append('Content-Type', 'application/json');
     
     var bodyObj = {
-      /**username: event.target.username.value,
-      password: event.target.password.value**/
       username: this.state.username,
       password: this.state.password
     }
@@ -122,13 +119,16 @@ class App extends Component {
       })
       .then(result => {
         if(result.success) {
-          this.setState({ token: result.token, message: 'login successful' });
+          this.setState({ token: result.token, message: 'Login successful' });
         }
         else if (!result.success) {
           this.setState({ message: result.message });
         }
       })
       .catch(err => console.log(err));
+      
+      
+
   }
   /** To the catalog */ 
   toCatalog() {
@@ -144,16 +144,8 @@ class App extends Component {
       const headerObj = new Headers();
       const token = "Token " + this.state.token;
       headerObj.append('Authorization', token);
-      console.log('token: ', this.state.token);
-
-      /**const bodyObj = {
-        text: event.target.text.value,
-        rate: event.target.rate.value
-      };**/
       var form = new FormData(event.target);
-      //form.append("text", "some text 2");
-      //form.append("rate", "4");
-      
+  
       const initObj = {
         method: 'POST',
         headers: headerObj,
@@ -161,7 +153,7 @@ class App extends Component {
         credentials: 'same-origin'
       };
 
-      const url = 'https://smktesting.herokuapp.com/api/reviews/' + (this.state.productsIndex);
+      const url = 'https://smktesting.herokuapp.com/api/reviews/' + this.state.productsIndex;
       fetch(url, initObj)
         .then(response => {
           if (response.ok) return response.json();
@@ -171,8 +163,21 @@ class App extends Component {
           console.log('result: ', result);
         })
         .catch(err => console.log(err));
+
+        var url_2 = 'https://smktesting.herokuapp.com/api/reviews/'+ this.state.productsIndex; 
+      fetch(url_2)
+        .then(response => {
+          if(response.ok) return response.json();
+          else return Promise.reject(response.status);
+        })
+        .then(result => {
+          console.log(result);
+          this.hendleLoadReview(result); 
+        })
+      .catch(err => console.log(err)); 
     }
-  render() {    
+  render() { 
+    /** Render a list of products **/  
       if(!this.state.productsIndex && !this.state.showForm && !this.state.showLoginForm) {
         return (
           <div className="App">
@@ -181,19 +186,22 @@ class App extends Component {
           </div>
         )
       }
+      /** Renders a product */
       else if(this.state.productsIndex && !this.state.showForm && !this.state.showLoginForm) {
         return (
           <div>
-            <RegisterComponent handleClickRegister= { this.handleClickRegister } token = {this.state.token} logOut = {this.logOut} />
-            <Products index={ this.state.productsIndex } listOtProducts = { this.state.response } reviews = { this.state.productReviews } hendleLoadReview = { this.hendleLoadReview } productReviews = { this.state.productReviews } changeInput={ this.changeInput } token = { this.state.token } postComment = {this.postComment} text={ this.state.text } rate = { this.state.rate } />
+            <RegisterComponent handleClickRegister= { this.handleClickRegister } handleClickLogin = { this.handleClickLogin } token = {this.state.token} logOut = {this.logOut} />
+            <Products index={ this.state.productsIndex } listOtProducts = { this.state.response } reviews = { this.state.productReviews } hendleLoadReview = { this.hendleLoadReview } productReviews = { this.state.productReviews } changeInput={ this.changeInput } token = { this.state.token } postComment = {this.postComment} text={ this.state.text } rate = { this.state.rate } toCatalog = { this.toCatalog } handleLoad={ this.handleLoad } />
           </div>
         )
       }
+      /** Registration form */
       if (this.state.showForm) {
         return <div>
                   <RegistrationForm username = { this.state.username } password = { this.state.password } changeInput= { this.changeInput } submitForm = { this.submitForm } message = { this.state.message } toCatalog = { this.toCatalog }/>
               </div>
       }
+      /** Login form */
       if (this.state.showLoginForm) {
         return <div>
                   <LoginForm username = { this.state.username } password = { this.state.password } changeInput= { this.changeInput } submitLoginForm = { this.submitLoginForm } message = { this.state.message } toCatalog = { this.toCatalog } />

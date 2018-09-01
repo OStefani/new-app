@@ -1,3 +1,4 @@
+/** A list of products */
 import React, { Component } from 'react';
 //import './ListOfProducts.css';
 
