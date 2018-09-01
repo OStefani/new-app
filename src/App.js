@@ -16,12 +16,12 @@ class App extends Component {
       productsIndex: null,
       showForm: false,
       showLoginForm: false,
-      username: 'user10',
-      password: 'user',
+      username: '',
+      password: '',
       token: null,
       message: '',
-      text: 'A comment',
-      rate: '3'
+      text: '',
+      rate: '5'
     }
     this.handleLoad = this.handleLoad.bind(this);
     this.handleClick = this.handleClick.bind(this);
@@ -160,21 +160,22 @@ class App extends Component {
           else return Promise.reject(response.status);
         })
         .then(result => {
-          console.log('result: ', result);
+          
+          var url_2 = 'https://smktesting.herokuapp.com/api/reviews/'+ this.state.productsIndex; 
+          fetch(url_2)
+            .then(response => {
+              if(response.ok) return response.json();
+              else return Promise.reject(response.status);
+          })
+            .then(result => {
+              this.hendleLoadReview(result); 
+          })
+            .catch(err => console.log(err)); 
+
         })
         .catch(err => console.log(err));
 
-        var url_2 = 'https://smktesting.herokuapp.com/api/reviews/'+ this.state.productsIndex; 
-      fetch(url_2)
-        .then(response => {
-          if(response.ok) return response.json();
-          else return Promise.reject(response.status);
-        })
-        .then(result => {
-          console.log(result);
-          this.hendleLoadReview(result); 
-        })
-      .catch(err => console.log(err)); 
+        
     }
   render() { 
     /** Render a list of products **/  

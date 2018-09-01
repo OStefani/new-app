@@ -17,7 +17,6 @@ class RenderItems extends Component{
       })
       .catch(err => console.log(err)); 
   }
-
       render() {
         /** Render a product */
           var index = this.props.index - 1;
