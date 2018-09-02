@@ -5,7 +5,9 @@ import Products from './Product.js';
 import ListOfProducts from './ListOfProducts';
 import RegisterComponent from './RegisterComponent';
 import RegistrationForm from './RegistrationForm.js';
-import LoginForm from './LoginForm.js'
+import LoginForm from './LoginForm.js';
+import StarRatingComponent from 'react-star-rating-component';
+
 /** Application state */
 class App extends Component {
   constructor(props) {
@@ -34,6 +36,7 @@ class App extends Component {
     this.toCatalog = this.toCatalog.bind(this);
     this.logOut = this.logOut.bind(this);
     this.postComment = this.postComment.bind(this);
+    this.onStarClick = this.onStarClick.bind(this);
   }
   /** To display list of items */
   handleLoad(someData) {    
@@ -177,6 +180,11 @@ class App extends Component {
 
         
     }
+
+  /** Stars */
+  onStarClick(nextValue, prevValue, name) {
+    this.setState({rate: nextValue});
+  }
   render() { 
     /** Render a list of products **/  
       if(!this.state.productsIndex && !this.state.showForm && !this.state.showLoginForm) {
@@ -192,7 +200,7 @@ class App extends Component {
         return (
           <div>
             <RegisterComponent handleClickRegister= { this.handleClickRegister } handleClickLogin = { this.handleClickLogin } token = {this.state.token} logOut = {this.logOut} />
-            <Products index={ this.state.productsIndex } listOtProducts = { this.state.response } reviews = { this.state.productReviews } hendleLoadReview = { this.hendleLoadReview } productReviews = { this.state.productReviews } changeInput={ this.changeInput } token = { this.state.token } postComment = {this.postComment} text={ this.state.text } rate = { this.state.rate } toCatalog = { this.toCatalog } handleLoad={ this.handleLoad } />
+            <Products index={ this.state.productsIndex } listOtProducts = { this.state.response } reviews = { this.state.productReviews } hendleLoadReview = { this.hendleLoadReview } productReviews = { this.state.productReviews } changeInput={ this.changeInput } token = { this.state.token } postComment = {this.postComment} text={ this.state.text } rate = { this.state.rate } toCatalog = { this.toCatalog } handleLoad={ this.handleLoad } onStarClick = { this.onStarClick } />
           </div>
         )
       }

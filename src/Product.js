@@ -1,6 +1,8 @@
 /** It returns a product with description and comments and also allows to post a comment to a registered user */
 import React, { Component } from 'react';
 //import './App.css';
+import StarRatingComponent from 'react-star-rating-component';
+
 
 class RenderItems extends Component{ 
   /** To fetch a product */
@@ -35,13 +37,13 @@ class RenderItems extends Component{
                   this.props.token &&
                   <div>
                     <form onSubmit = { this.props.postComment } className="feedback">
-                      <div className="radio">
-                        <input name="rate" type="radio" id="one" value={ '1' } checked = { this.props.rate ==='1' } onChange = { this.props.changeInput } /><label htmlFor="one">1</label>
-                        <input name="rate" type="radio" id="two" value={ '2' } checked = { this.props.rate ==='2' } onChange = { this.props.changeInput } /><label htmlFor="two">2</label>
-                        <input name="rate" type="radio" id="three" value={ '3' } checked = { this.props.rate ==='3' } onChange = { this.props.changeInput } /><label htmlFor="three">3</label>
-                        <input name="rate" type="radio" id="four" value={ '4' } checked = { this.props.rate ==='4' } onChange = { this.props.changeInput } /><label htmlFor="four">4</label>
-                        <input name="rate" type="radio" id="five" value={ '5' } checked = { this.props.rate ==='5' } onChange = { this.props.changeInput } /><label htmlFor="five">5</label>
-                    </div>
+                    <StarRatingComponent 
+                      name="rate" 
+                      starCount={5}
+                      value={Number(this.props.rate)}
+                      onStarClick={this.props.onStarClick}
+                    />
+                      
                     <div>
                         <textarea name="text" id="" cols="30" rows="10" onChange = { this.props.changeInput } value={this.props.text}></textarea>
                     </div>
